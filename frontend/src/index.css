@@ -1,7 +1,11 @@
 body {
-  background-color: #5f78e7;
   padding: 20px;
   margin: 0;
+  background-image: url("./img/kuva-1-1000.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 h1,
 h2,
@@ -16,7 +20,7 @@ ul.header li {
   margin: 0;
 }
 ul.header {
-  background-color: #111;
+  background-color: rgb(117, 119, 230);
   padding: 0;
 }
 ul.header li a {
@@ -39,5 +43,5 @@ ul.header li a {
 }
 
 .active {
-  background-color: #0099ff;
+  background-color: #9dc964;
 }
