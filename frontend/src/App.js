@@ -8,7 +8,7 @@ function App() {
   const [haku, setHaku] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:4000/gettuotteet")
+      .get(`http://localhost:4000/gettuotteet`)
       .then(function (response) {
         setData(response.data);
       })
@@ -24,8 +24,8 @@ function App() {
         placeholder="Haku"
         onChange={(event) => setHaku(event.target.value)}
       />
-      {data?.[0]?.title && <h1>{data[0].title}</h1>}
-      {data?.[0]?.extract && <p>{data[0].extract}</p>}
+      {data?.[1]?.title && <h1>{data[1].title}</h1>}
+      {data?.[1]?.extract && <p>{data[1].extract}</p>}
     </div>
   );
 }
