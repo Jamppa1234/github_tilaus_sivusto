@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import "./App.css";
 
 function App() {
-  return <div className="App">Hello World!</div>;
+  const [data, setData] = useState();
+  const [haku, setHaku] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/gettuotteet")
+      .then(function (response) {
+        setData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+  console.log({ haku });
+  return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Haku"
+        onChange={(event) => setHaku(event.target.value)}
+      />
+      {data?.[0]?.title && <h1>{data[0].title}</h1>}
+      {data?.[0]?.extract && <p>{data[0].extract}</p>}
+    </div>
+  );
 }
 
 export default App;
