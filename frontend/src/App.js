@@ -5,27 +5,29 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState();
+  const [hakuTemp, setHakuTemp] = useState();
   const [haku, setHaku] = useState();
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/gettuotteet`)
+      .get(`http://localhost:4000/wiki?haku=${haku}`)
       .then(function (response) {
         setData(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
-  console.log({ haku });
+  }, [haku]);
+
   return (
     <div className="App">
       <input
         type="text"
         placeholder="Haku"
-        onChange={(event) => setHaku(event.target.value)}
+        onChange={(event) => setHakuTemp(event.target.value)}
       />
-      {data?.[1]?.title && <h1>{data[1].title}</h1>}
-      {data?.[1]?.extract && <p>{data[1].extract}</p>}
+      <button onClick={(event) => setHaku(hakuTemp)}>Hae</button>
+      {data?.[0]?.title && <h1>{data[0].title}</h1>}
+      {data?.[0]?.extract && <p>{data[0].extract}</p>}
     </div>
   );
 }
