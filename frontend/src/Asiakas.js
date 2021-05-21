@@ -1,23 +1,18 @@
-import React, { Component } from "react";
- 
-function Asiakas(props) {
-    return <h1>{props.title}  </h1>
+import React, { useState } from "react";
+import axios from "axios";
+
+import "./App.css";
+
+function App() {
+    axios
+    .get("http://localhost:4000/")
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  return <div className="App">Hello World!</div>;
 }
 
-// get asiakkaat
-app.get('/getasiakkaat', (req, res) => {
-    let sql = 'SELECT * FROM asiakkaat'
-    let query = db.query(sql, (err, results) => {
-        if (err) {
-            throw err;
-        }
-        console.log(results);
-        res.send('Asiakkaat details fetched');
-    })
-})
-
-app.listen('4000', () => {
-    console.log('Server started on port 4000')
-})
-
-export default Asiakas;
+export default App;

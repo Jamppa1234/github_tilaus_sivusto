@@ -9,7 +9,7 @@ function App() {
   const [haku, setHaku] = useState();
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/wiki?haku=${haku}`)
+      .get(`http://localhost:4000/=${haku}`)
       .then(function (response) {
         setData(response.data);
       })
